@@ -1,0 +1,11 @@
+# Nmap 7.98 scan initiated Sat Jan 31 10:12:53 2026 as: /usr/lib/nmap/nmap --privileged -sS -p- -T4 -oN aggressive_scan.txt 10.75.219.124
+Nmap scan report for oke-extensa-2508 (10.75.219.124)
+Host is up (0.0015s latency).
+Not shown: 65531 filtered tcp ports (no-response)
+PORT      STATE SERVICE
+135/tcp   open  msrpc
+139/tcp   open  netbios-ssn
+445/tcp   open  microsoft-ds
+49668/tcp open  unknown
+
+# Nmap done at Sat Jan 31 10:14:23 2026 -- 1 IP address (1 host up) scanned in 90.03 seconds

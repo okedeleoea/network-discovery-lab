@@ -1,0 +1,12 @@
+# Nmap 7.98 scan initiated Sat Jan 31 09:37:44 2026 as: /usr/lib/nmap/nmap --privileged -sV -oN windows_service_scan.txt 10.75.219.124
+Nmap scan report for oke-extensa-2508 (10.75.219.124)
+Host is up (0.0017s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Jan 31 09:37:56 2026 -- 1 IP address (1 host up) scanned in 12.24 seconds
