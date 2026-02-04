@@ -1,16 +1,5 @@
-## Remediation Recommendations
+# Remediation Actions
 
-### SMB (Port 445)
-- Restrict access to trusted internal subnets only
-- Disable SMBv1
-- Enforce strong authentication and account lockout policies
-
-### NetBIOS (Port 139)
-- Disable NetBIOS over TCP/IP if not required
-- Block NetBIOS at network boundaries
-
-### Monitoring & Detection
-- Monitor Windows Event IDs 4624 and 4625 for abnormal logins
-- Alert on unusual SMB connection patterns
-- Enable centralized logging for Windows hosts
-
+- Verified firewall rules blocking SMB
+- Reviewed local account creation policies
+- Recommended monitoring scheduled task failures

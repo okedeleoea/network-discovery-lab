@@ -1,4 +1,7 @@
-## SOAR Playbook – Internal Reconnaissance to Lateral Movement
+# SOAR Playbook – Prevented Lateral Movement
 
-This playbook automates detection, enrichment, containment, and escalation of internal scanning and SMB-based lateral movement.
-
+1. Detect reconnaissance
+2. Validate firewall enforcement
+3. Review credential abuse artifacts
+4. Confirm no persistence
+5. Close incident as contained

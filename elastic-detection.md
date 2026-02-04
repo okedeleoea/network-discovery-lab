@@ -1,18 +1,12 @@
-## Elastic Security Detection – Port Scan to Lateral Movement
+# Elastic Detection Rules
 
-### Detection Overview
-This detection identifies internal reconnaissance followed by lateral movement using SMB/RPC.
+## Blocked SMB Attempt
+```kql
+destination.port:445 and event.action:("DROP","BLOCK")
+```
+Network Scan
 
-### Detection Logic
-- Threshold-based port scan detection (Elastic KQL)
-- Event correlation using EQL
-
-### MITRE ATT&CK Mapping
-- TA0043 – Reconnaissance
-- TA0008 – Lateral Movement
-
-### Tools
-- Elastic Security
-- KQL
-- EQL
+```Kql
+network.transport:tcp and destination.port > 0
+```
 

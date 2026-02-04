@@ -1,24 +1,15 @@
-## Network Discovery & Service Enumeration
+# Analysis – Network Discovery & Credential Abuse Attempt
 
-### Target
-Windows host on internal network
+## Observations
+- Multiple TCP ports probed in short time window
+- New local account created
+- Scheduled task creation attempted but failed
+- SMB connection blocked by firewall
 
-### Tools Used
-- Nmap
+## Risk Assessment
+- Reconnaissance confirmed
+- Credential misuse attempt detected
+- No operational impact
 
-### Findings
-- Port 135 (MSRPC)
-- Port 139 (NetBIOS)
-- Port 445 (SMB)
-
-### Risk Analysis
-These services can be abused for:
-- Lateral movement
-- Credential harvesting
-- Remote code execution
-
-### Recommendations
-- Restrict SMB access via firewall
-- Disable NetBIOS if not required
-- Monitor Windows Event IDs related to SMB activity
-
+## Conclusion
+Attack failed due to proper control enforcement.
