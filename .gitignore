@@ -1,1 +1,7 @@
 *.pyc pycache/ network.log *.txt
+*.pcap
+*.evtx
+__pycache__/
+.env
+.vscode/
+screenshots/tmp/
