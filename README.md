@@ -8,148 +8,132 @@
 
 ---
 
-## 📌 Overview
-This lab demonstrates **network discovery and defensive detection** in a controlled environment.
+📖 Overview
 
-The focus is **not exploitation**, but:
-- detecting reconnaissance activity,
-- validating security controls,
-- documenting *prevented* lateral movement,
-- and closing incidents professionally as a SOC analyst.
+This lab simulates internal network discovery activity and documents how a security analyst can observe, validate, and assess reconnaissance behavior before any successful exploitation or lateral movement occurs.
 
-This mirrors how real SOC teams operate in production environments.
+The goal is not to break into systems, but to understand:
 
+What reconnaissance looks like on a network
 
+What information an attacker attempts to gather
 
-## 🎯 Objectives
-- Simulate internal network discovery (port scanning)
-- Detect reconnaissance activity using Python logic
-- Attempt credential abuse and persistence
-- Validate firewall controls blocking SMB
-- Write SOC-grade investigation and response documentation
-- Map activity to MITRE ATT&CK with **partial success accuracy*
+What defenders should expect to see in logs and scans
 
+Where detection and prevention controls succeed or fail
 
+This project represents the early phase of the attack lifecycle, and serves as a foundation for later detection engineering and SIEM-focused labs.
 
-## 🧪 Lab Environment
-| Component | Details |
-|--------|---------|
-| Attacker | Kali Linux |
-| Target | Windows workstation |
-| Logs | Windows Security Event Logs |
-| SIEM | Elastic (conceptual detections) |
-| Language | Python |
-| Tools | Nmap, schtasks, Windows Firewall |
+🎯 Objectives
 
+Perform controlled internal network reconnaissance
 
+Identify exposed services and open ports
 
-## 🔍 Attack Simulation Summary 
-1. Internal network discovery via TCP port scanning
-2. New local user account created (`svc_backup`)
-3. Attempted scheduled task execution **failed**
-4. SMB access attempt over TCP/445
-5. Windows Firewall **blocked SMB**
-6. No persistence achieved
-7. No lateral movement occurred
+Validate host reachability and network segmentation
 
-**Final Outcome:**  
-✔ Reconnaissance detected  
-✔ Credential abuse attempt observed  
-✔ Lateral movement **prevented**
+Document reconnaissance artifacts and observations
 
----
+Assess security posture based on discovery results
 
-## 🛡️ Detection Coverage
+Prepare inputs for downstream detection engineering
 
-### Network Discovery
-- High-volume TCP port scanning
-- Unique destination port thresholding
+🧪 Lab Environment
+Component	Details
+Analyst / Attacker Host	Kali Linux
+Target Host	Windows workstation
+Network Type	Internal / lab network
+Tools Used	Nmap, Ping, SMB client (enumeration only)
+Focus	Visibility, documentation, analysis
 
-**MITRE**
-- TA0043 – Reconnaissance  
-- T1046 – Network Service Scanning  
+⚠️ No exploitation or privilege escalation is performed in this lab.
 
----
+🔍 Activities Performed
+1️⃣ Host Reachability Testing
 
-### Credential Abuse (Partial)
-- Local account creation detected
-- Scheduled task creation attempted but failed
+ICMP probing to assess whether hosts respond to pings
 
-**MITRE**
-- TA0006 – Credential Access  
-- T1053.005 – Scheduled Task (Attempted)
+Observation of blocked vs allowed ICMP traffic
 
----
+Purpose:
+Determine network visibility and firewall behavior.
 
-### Lateral Movement (Blocked)
-- SMB access attempt detected
-- Firewall enforcement confirmed
+2️⃣ Port & Service Discovery
 
-**MITRE**
-- TA0008 – Lateral Movement  
-- T1021.002 – SMB (Blocked)
+Targeted port scanning (including TCP/445)
 
----
+Identification of filtered, closed, and open ports
 
-## 📊 Elastic Detection (Sample)
-```kql
-network.transport : "tcp" and
-destination.port : 445 and
-event.action : ("DROP","BLOCK")
-```
-🚨 Incident Outcome
-Severity: Low
-Status: Contained
-Impact: None
-Reason: Security controls functioned as designed
+Purpose:
+Understand which services are exposed internally and which are protected by firewall rules.
 
-📁 Repository Structure
-.
-├── port_scan_detector.py
-├── elastic-detection.md
-├── investigation-timeline.md
-├── analysis.md
-├── remediation.md
-├── soar-playbook.md
-└── README.md
+3️⃣ Service Enumeration (Non-Exploitive)
 
-📈 Detection Maturity
-Area
-Level
-Recon Detection
-Implemented
-Credential Abuse
-Partial
-Lateral Movement
-Prevented
-Automation
-Conceptual
-Documentation
-SOC-grade
+Attempted SMB service discovery
 
-🚧 Detection Gaps
-No EDR telemetry (Sysmon)
-No AD telemetry
-SIEM detections are conceptual
+No authentication success
 
-## How to Run the Detection Script
+No share access achieved
 
-1. Clone the repository
-2. Ensure Python 3 is installed
-3. Place your `network.log` file
-4. Run:
-   ```bash
-   python3 port_scan_detector.py
-```
+Purpose:
+Validate that file sharing controls and firewall rules prevent enumeration and access.
 
-🔮 Future Improvements
-Add Sysmon + Winlogbeat
-Expand to Active Directory
-Automate response actions
-Visualize alerts in Elastic dashboards
+🧠 Key Findings
+
+Target host was reachable but selectively filtered
+
+SMB (TCP/445) was blocked / filtered
+
+No successful authentication or resource access occurred
+
+Network segmentation and host firewall controls were effective
+
+🛡️ Defensive Interpretation (SOC Perspective)
+
+From a SOC analyst viewpoint, this activity represents:
+
+Pre-attack reconnaissance
+
+An opportunity for:
+
+Early detection
+
+Threat hunting
+
+Alert tuning
+
+Evidence that preventive controls are working as designed
+
+This lab intentionally stops before detection logic, which is handled in the separate:
+
+➡️ network-detection-lab
+
+🧩 Relationship to Other Labs
+Lab	Purpose
+network-discovery-lab	Reconnaissance & visibility
+network-detection-lab	SIEM alerts & detection rules
+AD attack labs	Credential abuse & lateral movement
+Automation labs	Python-based detection & enrichment
+
+This separation mirrors real SOC workflows and improves portfolio clarity.
+
+📚 MITRE ATT&CK Mapping (Discovery Only)
+
+TA0043 – Reconnaissance
+
+T1046 – Network Service Scanning
+
+No lateral movement, credential access, or persistence techniques are executed in this lab.
+
+📂 Repository Structure
+network-discovery-lab/
+├── README.md
+├── analysis.md                # Scan results & observations
+├── screenshots/               # Evidence of scans & outputs
+└── notes.md                   # Analyst interpretation & lessons learned
 
 👤 Author
 Olanrewaju Emmanuel Okedele
 Aspiring SOC Analyst | Detection Engineering
 Ontario-focused job search
-🔗 LinkedIn: https://www.linkedin.com/in/okedeleoea
+🔗 LinkedIn: https://www.linkedin.com/in/olanrewajuemmanuelokedele
