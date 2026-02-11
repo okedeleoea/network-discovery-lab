@@ -1,3 +1,8 @@
+⚠️ This repository has been archived.
+
+This project evolved into:
+➡️ soc-detection-engineering-lifecycle-lab
+
 # network-discovery-lab
 **SOC Detection Engineering | Network Reconnaissance & Prevented Lateral Movement**
 
