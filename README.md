@@ -38,10 +38,14 @@ Identify exposed services and open ports
 Validate host reachability and network segmentation
 
 Document reconnaissance artifacts and observations
-
-Assess security posture based on discovery results
-
-Prepare inputs for downstream detection engineering
+=======
+## 🔍 Attack Simulation Summary 
+- Internal network scanning and service discovery conducted
+- Unauthorized local administrator account created
+- Initial scheduled task successfully created using the fake admin account
+- Subsequent scheduled task execution attempt failed
+- SMB-based lateral movement blocked by firewall controls
+- No lateral spread or persistence achieved
 
 🧪 Lab Environment
 Component	Details
@@ -69,19 +73,6 @@ Targeted port scanning (including TCP/445)
 
 Identification of filtered, closed, and open ports
 
-Purpose:
-Understand which services are exposed internally and which are protected by firewall rules.
-
-3️⃣ Service Enumeration (Non-Exploitive)
-
-Attempted SMB service discovery
-
-No authentication success
-
-No share access achieved
-
-Purpose:
-Validate that file sharing controls and firewall rules prevent enumeration and access.
 
 🧠 Key Findings
 
@@ -109,18 +100,6 @@ Alert tuning
 
 Evidence that preventive controls are working as designed
 
-This lab intentionally stops before detection logic, which is handled in the separate:
-
-➡️ network-detection-lab
-
-🧩 Relationship to Other Labs
-Lab	Purpose
-network-discovery-lab	Reconnaissance & visibility
-network-detection-lab	SIEM alerts & detection rules
-AD attack labs	Credential abuse & lateral movement
-Automation labs	Python-based detection & enrichment
-
-This separation mirrors real SOC workflows and improves portfolio clarity.
 
 📚 MITRE ATT&CK Mapping (Discovery Only)
 
@@ -139,6 +118,6 @@ network-discovery-lab/
 
 👤 Author
 Olanrewaju Emmanuel Okedele
-Aspiring SOC Analyst | Detection Engineering
-Ontario-focused job search
+Cloud Security | SecOps Analyst | SOC Analyst | Detection Engineering
+=======
 🔗 LinkedIn: https://www.linkedin.com/in/olanrewajuemmanuelokedele
