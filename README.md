@@ -121,3 +121,15 @@ Olanrewaju Emmanuel Okedele
 Cloud Security | SecOps Analyst | SOC Analyst | Detection Engineering
 =======
 🔗 LinkedIn: https://www.linkedin.com/in/olanrewajuemmanuelokedele
+
+## 🔗 Next Step: Detection Engineering
+
+This lab focuses on identifying and validating internal network discovery activity and defensive controls.
+
+The next phase of this work — alerting, SIEM correlation, and SOC response — is implemented in:
+
+👉 **network-detection-lab**  
+https://github.com/okedeleoea/network-detection-lab
+
+Together, these labs demonstrate a full SOC workflow:
+Reconnaissance → Detection → Investigation → Incident Closure.
